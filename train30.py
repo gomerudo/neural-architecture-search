@@ -100,7 +100,7 @@ for trial in range(MAX_TRIALS):
         print("Trial %d: Controller loss : %0.6f" % (trial + 1, loss))
 
         # write the results of this trial into a file
-        with open('train_history.csv', mode='a+') as f:
+        with open('train_history30.csv', mode='a+') as f:
             data = [previous_acc, reward]
             data.extend(state_space.parse_state_space_list(state))
             writer = csv.writer(f)
