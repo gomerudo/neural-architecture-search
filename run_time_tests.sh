@@ -9,7 +9,7 @@ TIMEFORMAT=%R
 TIMES_ARRAY=()
 
 #for n in 1 5 10 15 20 25 30 50; do
-for n in 1 5; do
+for n in "$@"; do
     # Create the train and log filenames
     TRAIN_FILE="train${n}.py"
     LOG_FILE="train${n}.log"
@@ -20,6 +20,7 @@ for n in 1 5; do
 
     # Run the file and measure the time, but not printing int
     echo "Running ${TRAIN_FILE}"
+    #SPENT=$(TIMEFORMAT=%R; (time sleep 2 >> ${LOG_FILE}) 2>&1 > /dev/null)
     SPENT=$(TIMEFORMAT=%R; (time python3 ${TRAIN_FILE} >> ${LOG_FILE}) 2>&1 > /dev/null)
 
     # Add the spent time to the array of times for latter plotting
@@ -36,4 +37,4 @@ for n in 1 5; do
 done
 
 # Print the array of times
-echo "${TIMES_ARRAY[@]}"
+echo "Array of times is ${TIMES_ARRAY[@]}"
